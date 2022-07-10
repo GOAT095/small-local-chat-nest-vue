@@ -19,7 +19,7 @@ onBeforeMount(() => {
     });
     socket.on('typing', ({ name, isTyping}) =>{
       if(isTyping)
-      {  typingDisplay.value = '${name} is typing...';}
+      {  typingDisplay.value = `${name} is typing...`;}
       else
         {typingDisplay.value = '';}
     });
@@ -58,15 +58,15 @@ const sendMessage = () =>{
     <button type="submit">Send</button>
     </form>
   </div>
-
+ <div v-if="joined">
   <div class= "chat-container">
-    
+   
     <div class= "messages-container">
       <div v-for="message in messages">
         [{{message.name}}]: {{message.text}}
       </div>
     </div>
-
+    </div>
     <div v-if="typingDisplay">{{ typingDisplay }}</div>
     <div class="messageInput">
       <form @submit.prevent="sendMessage">
@@ -77,6 +77,7 @@ const sendMessage = () =>{
     </div>
     
   </div>
+  
 </div>
   
 </template>
