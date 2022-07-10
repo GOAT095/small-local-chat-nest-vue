@@ -32,7 +32,7 @@ const emitTyping = () =>{
   socket.emit('typing', {isTyping: true});
   timeout = setTimeout(() => {
     socket.emit('typing', {isTyping: false});
-  }, 2000);
+  }, 3000);
 }
 
 const join = () =>{
@@ -65,8 +65,11 @@ const sendMessage = () =>{
       <div v-for="message in messages">
         [{{message.name}}]: {{message.text}}
       </div>
+      
     </div>
+    <div class="line"></div>
     </div>
+    
     <div v-if="typingDisplay">{{ typingDisplay }}</div>
     <div class="messageInput">
       <form @submit.prevent="sendMessage">
@@ -87,16 +90,25 @@ const sendMessage = () =>{
 .chat{
   padding: 20px;
   height: 100vh;
-  color: blueviolet;
 }
 
 .chat-container{
+  
   display: flex;
   flex-direction: column;
   height: 100%;
 }
 
 .message-container{
+  padding-top: 50px;
   flex: 1;
 }
+.line{
+width: 250px;
+height: 5px;
+
+border-bottom: solid white;
+/* position: absolute; */
+}
+
 </style>
